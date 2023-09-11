@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+    <div class="container">
+       <div th:replace="~{base :: header('Novo pedido')}"></div>
+
+        <form th:object="${requisicaoNovoPedido}" action="/pedido/create" method="POST">
+            <div class="form-group">
+			    <label for="produto">Produto:</label>
+			    <input th:field="*{nomeProduto}" th:errorclass="is-invalid" type="text" class="form-control" required>
+			    <div th:errors="*{nomeProduto}" class="text-danger"></div>
+			</div>
+
+            <div class="form-group">
+                <label for="url">URL:</label>
+                <input th:field="*{urlProduto}" th:errorclass="is-invalid" type="text" class="form-control" required>
+                <div th:errors="*{nomeProduto}" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="urlImagem">URL da Imagem:</label>
+                <input th:field="*{urlImagem}" th:errorclass="is-invalid" type="text" class="form-control" required>
+                <div th:errors="*{nomeProduto}" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea th:field="*{descricao}" th:errorclass="is-invalid" class="form-control" required></textarea>
+                <div th:errors="*{nomeProduto}" class="text-danger"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
